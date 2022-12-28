@@ -1,0 +1,35 @@
+class Solution{
+  public:
+            Node* merge(Node* a, Node* b)
+            {
+                if(a==NULL)return b;
+                if(b==NULL)return a;
+                Node* result=NULL;
+                if(a->data<=b->data)
+                {
+                    
+                    result=a;
+                    result->next=merge(a->next,b);
+                }
+                else{
+                    result=b;
+                    result->next=merge(a->next,b);
+                }
+                
+                return result;}
+                Node* mergeKLists(Node* arr[],int K){
+                    K--;
+                    
+                    
+                    for(int i=1;i<K;i++)
+                    {
+                        arr[i]= merge(arr[i],arr[i-1]);
+                    }
+                    return arr[K];
+                }
+            };
+                    
+                    
+                    
+                    
+                
